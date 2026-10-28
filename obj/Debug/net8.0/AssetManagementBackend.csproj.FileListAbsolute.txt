@@ -290,3 +290,6 @@ C:\Users\ELITEBOOK\OneDrive\Desktop\Some-stuff\projects\AssetManagementBackend\A
 C:\Users\ELITEBOOK\OneDrive\Desktop\Some-stuff\projects\AssetManagementBackend\Asset-Management-Backend\obj\Debug\net8.0\AssetManagementBackend.pdb
 C:\Users\ELITEBOOK\OneDrive\Desktop\Some-stuff\projects\AssetManagementBackend\Asset-Management-Backend\obj\Debug\net8.0\AssetManagementBackend.genruntimeconfig.cache
 C:\Users\ELITEBOOK\OneDrive\Desktop\Some-stuff\projects\AssetManagementBackend\Asset-Management-Backend\obj\Debug\net8.0\ref\AssetManagementBackend.dll
+C:\Users\ELITEBOOK\OneDrive\Desktop\Some-stuff\projects\AssetManagementBackend\Asset-Management-Backend\obj\Debug\net8.0\AssetManagementBackend.sourcelink.json
+C:\Users\ELITEBOOK\OneDrive\Desktop\Some-stuff\projects\AssetManagementBackend\Asset-Management-Backend\bin\Debug\net8.0\AssetManagementBackend.staticwebassets.runtime.json
+C:\Users\ELITEBOOK\OneDrive\Desktop\Some-stuff\projects\AssetManagementBackend\Asset-Management-Backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

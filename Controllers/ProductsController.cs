@@ -1,9 +1,11 @@
 using AssetManagementBackend.DTOs;
 using AssetManagementBackend.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssetManagementBackend.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
@@ -21,18 +23,6 @@ public class ProductsController : ControllerBase
         int pageSize = 16,
         string? search = null)
     {
-        if (page < 1)
-        {
-            page = 1;
-        }
-        if (pageSize < 1)
-        {
-            pageSize = 16;
-        }
-        if (pageSize > 100)
-        {
-            pageSize = 100;
-        }
         var products = await _productService.GetProducts(
             page,
             pageSize,
@@ -46,14 +36,10 @@ public class ProductsController : ControllerBase
     {
         var product = await _productService.GetProduct(id);
 
-        if(product == null)
-        {
-            return NotFound();
-        }
-
         return Ok(product);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public async Task<IActionResult> CreateProduct(CreateProductDto dto)
     {
@@ -63,10 +49,11 @@ public class ProductsController : ControllerBase
             nameof(GetProduct),
             new { id = product.Id },
             product
-            );
+        );
     }
 
-    [HttpPut]
+    [Authorize(Roles = "Admin")]
+    [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProduct(
         Guid id,
         UpdateProductDto dto
@@ -74,23 +61,14 @@ public class ProductsController : ControllerBase
     {
         var product = await _productService.UpdateProduct(id, dto);
 
-        if (product == null)
-        {
-            return NotFound();
-        }
-
         return Ok(product);
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(Guid id)
     {
-        var deleted = await _productService.DeleteProduct(id);
-
-        if (!deleted)
-        {
-            return NotFound();
-        }
+        await _productService.DeleteProduct(id);
 
         return NoContent();
     }

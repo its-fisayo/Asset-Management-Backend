@@ -12,9 +12,23 @@ public static class ProductMapping
         {
             Id = product.Id,
             Name = product.Name,
-            Category = product.Category,
-            Brand = product.Brand,
-            Description = product.Description
+            CategoryId = product.CategoryId,
+            CategoryName = product.Category?.Name ?? string.Empty,
+            BrandId = product.BrandId,
+            BrandName = product.Brand?.Name ?? string.Empty,
+            Description = product.Description,
+            Images = product.Images
+                .Select(image => new ProductImageResponseDto
+                {
+                    Id = image.Id,
+                    ProductId = image.ProductId,
+                    FileName = image.FileName,
+                    FilePath = image.FilePath,
+                    ContentType = image.ContentType,
+                    FileSize = image.FileSize,
+                    UploadedAt = image.UploadedAt
+                })
+                .ToList()
         };
     }
 }
